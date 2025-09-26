@@ -7,6 +7,9 @@ Commandly is a Python-based AI assistant that combines voice recognition, natura
 ![Commandly Orb Interface](https://img.shields.io/badge/Interface-Animated_Orb-blue?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
 ![OpenAI](https://img.shields.io/badge/Powered_by-OpenAI-black?style=for-the-badge&logo=openai)
+## 📸 Screenshot
+
+![Commandly Running](modules/img/Screenshot%202025-09-26%20153430.png)
 
 ## ✨ Features
 
