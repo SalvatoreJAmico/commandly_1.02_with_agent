@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "**/.git": false
+    },
+    "editor.experimental.preferTreeSitter.css": true
+}
