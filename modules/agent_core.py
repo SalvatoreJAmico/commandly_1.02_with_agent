@@ -168,9 +168,23 @@ def execute_tool(tool_name: str, args: Dict[str, Any]) -> str:
             files = file_tools.find_files(args.get("root", "."), args.get("query", ""))
             return "\n".join(files)
             
-        elif tool_name == "open_program" or tool_name == "open_application":  # Accept both names
-            app_name = args.get("name") or args.get("application", "")  # Handle both arg names
-            return system_control.open_program(app_name)
+        elif tool_name in ("open_program", "open_application"):  # Accept both names
+            # Allow args to be passed as a raw string (agent may return just a string)
+            if isinstance(args, str):
+                app_name = args
+            else:
+                # Accept multiple possible argument keys the agent might send
+                app_name = (
+                    args.get("name")
+                    or args.get("application")
+                    or args.get("program")
+                    or args.get("app")
+                    or args.get("application_name")
+                    or ""
+                )
+
+            # Use the more robust launcher which uses the Windows 'start' command
+            return system_control.open_application(app_name)
             
         elif tool_name == "search_web":
             return system_control.search_web(args.get("query", ""))

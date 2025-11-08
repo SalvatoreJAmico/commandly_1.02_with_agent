@@ -151,19 +151,25 @@ def open_application(app_name):  # This should match what agent_core.py calls
         
         try:
             print(f"🚀 Executing: {command}")
-            result = subprocess.run(
-                command, 
-                shell=True, 
-                capture_output=True, 
-                text=True, 
-                timeout=5
-            )
-            
-            if result.returncode == 0:
-                return f"✅ Successfully opened {app_name}"
-            else:
-                return f"❌ Failed to open {app_name}. Error: {result.stderr}"
-                
+            # GUI apps can take longer to start on some setups; use a slightly longer timeout
+            try:
+                result = subprocess.run(
+                    command,
+                    shell=True,
+                    capture_output=True,
+                    text=True,
+                    timeout=20,
+                )
+
+                if result.returncode == 0:
+                    return f"✅ Successfully opened {app_name}"
+                else:
+                    return f"❌ Failed to open {app_name}. Error: {result.stderr}"
+
+            except subprocess.TimeoutExpired:
+                # Many GUI 'start' commands are not expected to return quickly; treat timeout as a likely success
+                return f"✅ Launched {app_name} (process did not return within timeout)"
+
         except Exception as e:
             return f"❌ Exception opening {app_name}: {str(e)}"
     
