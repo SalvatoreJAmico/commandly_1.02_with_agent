@@ -11,6 +11,8 @@ Commandly is a Python-based AI assistant that combines voice recognition, natura
 
 ![Commandly Running](modules/img/Screenshot%202025-09-26%20153430.png)
 
+[video demo](https://uic.zoom.us/rec/share/uOSw_kswbizUgzZW4plmyGGXJcHjxFXYeBmlPPK1fgtoENdFkEpNuf6ZKj8ny7NC.wYzCPCYe8IZ1pLQd?startTime=1762566016000)
+
 ## ✨ Features
 
 ### 🎤 Voice Control
